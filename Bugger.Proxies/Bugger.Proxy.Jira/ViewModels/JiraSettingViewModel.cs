@@ -34,7 +34,13 @@ namespace Bugger.Proxy.Jira.ViewModels
             this.propertyMappingCollection = new PropertyMappingDictionary();
             this.jiraFields = new ObservableCollection<JiraField>();
             this.bugFilterFields = new ObservableCollection<JiraField>();
-            this.priorityValues = new ObservableCollection<CheckString>();
+            this.priorityValues = new ObservableCollection<CheckString>()
+            {
+                new CheckString("None"),
+                new CheckString("Low"),
+                new CheckString("Medium"),
+                new CheckString("High")
+            };
 
             PropertyDescriptorCollection propertyDescriptorCollection = TypeDescriptor.GetProperties(typeof(Bug));
             foreach (PropertyDescriptor propertyDescriptor in propertyDescriptorCollection)

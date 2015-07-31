@@ -34,6 +34,7 @@ namespace Bugger.Proxy.Jira
         private List<string> ignoreField;
         private const string PriorityRedSeparator = ";";
         private readonly List<JiraField> jiraFieldsCache;
+        private readonly List<string> priorityValues;
 
         private readonly DelegateCommand testConnectionCommand;
 
@@ -56,6 +57,7 @@ namespace Bugger.Proxy.Jira
 
             this.jiraFieldsCache = new List<JiraField>();
             this.stateValues = new ObservableCollection<string>();
+            this.priorityValues = new List<string>() { "None", "Low", "Medium", "High" };
 
             this.CanQuery = false;
         }
@@ -349,7 +351,7 @@ namespace Bugger.Proxy.Jira
             var priorityField = this.settingViewModel.JiraFields.FirstOrDefault(x => x.Name == fieldName);
             if (priorityField == null) { return; }
 
-            foreach (var value in priorityField.AllowedValues)
+            foreach (var value in this.priorityValues)
             {
                 CheckString checkValue = new CheckString(value);
                 checkValue.IsChecked = !string.IsNullOrWhiteSpace(this.document.PriorityRed)
