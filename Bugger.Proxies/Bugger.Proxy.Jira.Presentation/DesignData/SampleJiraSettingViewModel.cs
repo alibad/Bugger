@@ -14,7 +14,7 @@ namespace Bugger.Proxy.Jira.Presentation.DesignData
             : base(new MockJiraSettingView())
         {
             this.ConnectUri = new Uri("https://jira.practicefusion.com");
-            this.JqlQuery = "assignee = {userame} and Sprint in openSprints()";
+            this.JqlQuery = JqlQueries.AssignedToMeInOpensprints;
             this.UserName = "abadereddin";
             this.Password = "Password";
 

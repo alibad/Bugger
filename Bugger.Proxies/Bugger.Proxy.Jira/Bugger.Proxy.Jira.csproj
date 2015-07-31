@@ -59,6 +59,7 @@
     <Compile Include="Documents\SettingDocumentType.cs" />
     <Compile Include="JiraHelper.cs" />
     <Compile Include="JiraProxy.cs" />
+    <Compile Include="JqlQueries.cs" />
     <Compile Include="Models\CheckString.cs" />
     <Compile Include="Models\ProgressTypes.cs" />
     <Compile Include="Models\JiraField.cs" />

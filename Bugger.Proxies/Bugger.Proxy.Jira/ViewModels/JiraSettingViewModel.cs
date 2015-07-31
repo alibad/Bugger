@@ -173,7 +173,7 @@ namespace Bugger.Proxy.Jira.ViewModels
                 mapping.Value = string.Empty;
             }
 
-            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
+            JqlQuery = JqlQueries.AssignedToMeInOpensprints;
             PriorityRed = string.Empty;
 
             ProgressType = ProgressTypes.NotWorking;
