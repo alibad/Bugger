@@ -2,6 +2,7 @@
 using Bugger.Applications.Properties;
 using Bugger.Applications.Services;
 using Bugger.Proxy;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
@@ -49,7 +50,9 @@ namespace Bugger.Applications.Controllers
             }
             else if (this.ProxyService.Proxies.Any())
             {
-                this.proxyService.ActiveProxy = this.proxyService.Proxies.First();
+
+                var jiraProxy = this.proxyService.Proxies.FirstOrDefault(x => x.ProxyName.IndexOf("jira", 0, StringComparison.CurrentCultureIgnoreCase) != -1);
+                this.proxyService.ActiveProxy = jiraProxy ?? this.proxyService.Proxies.First();
             }
             else
             {
