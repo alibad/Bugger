@@ -51,7 +51,9 @@ namespace Bugger.Proxy.Jira
                     Severity = i.Severity,
                     State = i.Status.Name,
                     Title = i.Summary,
-                    Priority = i.Fields.Priority.Name
+                    Priority = i.Fields.Priority.Name,
+                    Type = redFilter.Contains(i.Fields.Priority.Name) ? BugType.Red : BugType.Yellow,
+                    ChangedDate = i.Updated
                 }).ToList();
         }
     }

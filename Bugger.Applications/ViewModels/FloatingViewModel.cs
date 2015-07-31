@@ -49,7 +49,7 @@ namespace Bugger.Applications.ViewModels
             }
             else
             {
-                ViewCore.Left = presentationService.VirtualScreenWidth - 200;
+                ViewCore.Left = 0;
                 ViewCore.Top = 50;
             }
 
