@@ -26,6 +26,7 @@ namespace Bugger.Proxy.Jira.Documents
             UserName = string.Empty;
             Password = string.Empty;
             BugFilterField = string.Empty;
+            JqlQuery = JqlQueries.AssignedToMeInOpensprints;
             BugFilterValue = string.Empty;
             PriorityRed = string.Empty;
             JqlQuery = "assignee = {userame} and Sprint in openSprints()";

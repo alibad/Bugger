@@ -15,6 +15,7 @@ namespace Bugger.Proxy.Jira.Presentation.DesignData
         {
             this.ConnectUri = new Uri("https://jira.practicefusion.com");
             this.BugFilterField = "Work Item Type";
+            this.JqlQuery = JqlQueries.AssignedToMeInOpensprints;
             this.BugFilterValue = "Bugs";
             this.UserName = "abadereddin";
             this.Password = "Password";

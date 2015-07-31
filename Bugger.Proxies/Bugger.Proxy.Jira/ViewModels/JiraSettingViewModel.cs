@@ -202,6 +202,7 @@ namespace Bugger.Proxy.Jira.ViewModels
             }
 
             BugFilterField = string.Empty;
+            JqlQuery = JqlQueries.AssignedToMeInOpensprints;
             BugFilterValue = string.Empty;
             PriorityRed = string.Empty;
 
