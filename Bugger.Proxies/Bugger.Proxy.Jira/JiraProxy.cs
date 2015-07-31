@@ -16,7 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using JiraConnection = Atlassian.Jira;
+using JiraConnection = Jira.SDK;
 
 namespace Bugger.Proxy.Jira
 {
@@ -488,7 +488,7 @@ namespace Bugger.Proxy.Jira
                 jiraHelper.TryConnection(this.settingViewModel.ConnectUri, this.settingViewModel.UserName,
                                              this.settingViewModel.Password, out jira);
 
-                return "";
+                return jira;
             })
             .ContinueWith(task =>
             {

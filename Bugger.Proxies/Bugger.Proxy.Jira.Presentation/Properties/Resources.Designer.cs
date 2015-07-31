@@ -178,7 +178,7 @@ namespace Bugger.Proxy.Jira.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uri of Jira Query.
+        ///   Looks up a localized string similar to Enter the Jira Url.
         /// </summary>
         public static string NameOrURIofJira {
             get {

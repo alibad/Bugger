@@ -13,10 +13,10 @@ namespace Bugger.Proxy.Jira.Presentation.DesignData
         public SampleJiraSettingViewModel()
             : base(new MockJiraSettingView())
         {
-            this.ConnectUri = new Uri("https://Jira.codeplex.com:443/Jira/Jira12");
+            this.ConnectUri = new Uri("https://jira.practicefusion.com");
             this.BugFilterField = "Work Item Type";
             this.BugFilterValue = "Bugs";
-            this.UserName = "BigEgg";
+            this.UserName = "abadereddin";
             this.Password = "Password";
 
             this.PriorityValues.Add(new CheckString("High"));
