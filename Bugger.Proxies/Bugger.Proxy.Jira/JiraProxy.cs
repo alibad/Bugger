@@ -85,8 +85,15 @@ namespace Bugger.Proxy.Jira
             RemoveWeakEventListener(this.settingViewModel, SettingViewModelPropertyChanged);
             this.settingViewModel.ClearMappingData();
 
-            this.settingViewModel.ConnectUri = this.document.ConnectUri;
-            this.settingViewModel.UserName = this.document.UserName;
+            var userName = this.document.UserName;
+
+            if(string.IsNullOrEmpty(userName))
+            {
+                userName = Environment.UserName;
+            }
+
+            this.settingViewModel.ConnectUri = this.document.ConnectUri ?? new Uri("https://jira.practicefusion.com");
+            this.settingViewModel.UserName = userName;
             this.settingViewModel.Password = this.document.Password;
 
             foreach (var mapping in this.document.PropertyMappingCollection)
