@@ -25,8 +25,7 @@ namespace Bugger.Proxy.Jira.Documents
 
             UserName = string.Empty;
             Password = string.Empty;
-            BugFilterField = string.Empty;
-            BugFilterValue = string.Empty;
+            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
             PriorityRed = string.Empty;
         }
 
@@ -39,9 +38,7 @@ namespace Bugger.Proxy.Jira.Documents
 
         public string Password { get; set; }
 
-        public string BugFilterField { get; set; }
-
-        public string BugFilterValue { get; set; }
+        public string JqlQuery { get; set; }
 
         public string PriorityRed { get; set; }
         #endregion

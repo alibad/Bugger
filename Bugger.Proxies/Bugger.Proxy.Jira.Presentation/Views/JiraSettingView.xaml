@@ -37,7 +37,8 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="170" />
-            <RowDefinition Height="310" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="260" />
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="0" Header="{x:Static p:Resources.ConnectSettingsTitle}"
                   IsEnabled="{Binding ProgressType, Converter={x:Static c:ProgressTypesToConnectionEnableConverter.Default}}">
@@ -77,11 +78,18 @@
                              Visibility="{Binding ProgressType, Converter={x:Static c:ProgressTypesToVisibilityConverter.Default}}"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="1" Margin="0,10,0,0" Header="{x:Static p:Resources.MappingSettingsTitle}"
+        <GroupBox Grid.Row="1" Margin="0,10,0,0" Header="{x:Static p:Resources.JiraQuerySettingsTitle}"
+                  IsEnabled="{Binding ProgressType, Converter={x:Static c:ProgressTypesToMappingEnableConverter.Default}}">
+            <Grid Margin="5">
+                <TextBox x:Name="JqlQueryTextBox" Text="{Binding JqlQuery, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Margin="0,10,0,0" Header="{x:Static p:Resources.MappingSettingsTitle}"
                   IsEnabled="{Binding ProgressType, Converter={x:Static c:ProgressTypesToMappingEnableConverter.Default}}">
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="38"/>
+                    <ColumnDefinition Width="112"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="*"/>
@@ -91,10 +99,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{x:Static p:Resources.MapTitle}" VerticalAlignment="Center" Grid.ColumnSpan="4"/>
-                <ListView ItemsSource="{Binding PropertyMappingCollection}" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,0,10">
+                <TextBlock Text="{x:Static p:Resources.MapTitle}" VerticalAlignment="Center" Grid.ColumnSpan="5" Margin="0,7"/>
+                <ListView ItemsSource="{Binding PropertyMappingCollection}" Grid.Row="1" Grid.ColumnSpan="5" Margin="0,0,0,10">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Width="170" Header="{x:Static p:Resources.BugProperty}" DisplayMemberBinding="{Binding Key}"/>
@@ -112,16 +119,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Label Content="{x:Static p:Resources.BugFilter}" Grid.Row="2" VerticalAlignment="Center"/>
-                <ComboBox x:Name="bugFilter" Grid.Row="2" Grid.IsSharedSizeScope="True" Grid.Column="1" VerticalAlignment="Center" ItemsSource="{Binding BugFilterFields}" SelectedValue="{Binding BugFilterField}" SelectedValuePath="Name">
-                    <ComboBox.ItemTemplateSelector>
-                        <ts:JiraFieldComboTemplateSelector/>
-                    </ComboBox.ItemTemplateSelector>
-                </ComboBox>
-                <TextBlock Text="{x:Static p:Resources.Equal}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" ItemsSource="{Binding SelectedItem.AllowedValues, ElementName=bugFilter}" SelectedItem="{Binding BugFilterValue}"/>
-                <Label Content="{x:Static p:Resources.PriorityRed}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Target="{Binding ElementName=priorityRed}"/>
-                <ComboBox x:Name="priorityRed" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="{Binding PriorityRed, Mode=OneWay}" ItemsSource="{Binding PriorityValues}" IsReadOnly="True" IsEditable="True" Margin="0,4">
+                <Label Content="{x:Static p:Resources.PriorityRed}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Target="{Binding ElementName=priorityRed}" Grid.ColumnSpan="2" Margin="1,2"/>
+                <ComboBox x:Name="priorityRed" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="{Binding PriorityRed, Mode=OneWay}" ItemsSource="{Binding PriorityValues}" IsReadOnly="True" IsEditable="True" Margin="0,4">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -131,8 +130,9 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBlock Text="{x:Static p:Resources.SplitBy}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
+                <TextBlock Text="{x:Static p:Resources.SplitBy}" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
+
     </Grid>
 </UserControl>

@@ -19,10 +19,9 @@ namespace Bugger.Proxy.Jira.ViewModels
         private Uri connectUri;
         private string userName;
         private string password;
-        private string bugFilterField;
-        private string bugFilterValue;
         private string priorityRed;
-        
+        private string jqlQuery;
+
         private ICommand testConnectionCommand;
 
         private ProgressTypes progressType;
@@ -98,28 +97,15 @@ namespace Bugger.Proxy.Jira.ViewModels
             }
         }
 
-        public string BugFilterField
+        public string JqlQuery
         {
-            get { return this.bugFilterField; }
+            get { return this.jqlQuery; }
             set
             {
-                if (this.bugFilterField != value)
+                if (this.jqlQuery != value)
                 {
-                    this.bugFilterField = value;
-                    RaisePropertyChanged("BugFilterField");
-                }
-            }
-        }
-
-        public string BugFilterValue
-        {
-            get { return this.bugFilterValue; }
-            set
-            {
-                if (this.bugFilterValue != value)
-                {
-                    this.bugFilterValue = value;
-                    RaisePropertyChanged("BugFilterValue");
+                    this.jqlQuery = value;
+                    RaisePropertyChanged("JqlQuery");
                 }
             }
         }
@@ -187,8 +173,7 @@ namespace Bugger.Proxy.Jira.ViewModels
                 mapping.Value = string.Empty;
             }
 
-            BugFilterField = string.Empty;
-            BugFilterValue = string.Empty;
+            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
             PriorityRed = string.Empty;
 
             ProgressType = ProgressTypes.NotWorking;

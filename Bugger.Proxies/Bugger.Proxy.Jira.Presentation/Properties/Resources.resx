@@ -144,9 +144,6 @@
   <data name="Path" xml:space="preserve">
     <value>Pat_h:</value>
   </data>
-  <data name="PortNumber" xml:space="preserve">
-    <value>Port _number:</value>
-  </data>
   <data name="Preview" xml:space="preserve">
     <value>Pre_view:</value>
   </data>
@@ -165,14 +162,8 @@
   <data name="MappingSettingsTitle" xml:space="preserve">
     <value>Mapping Settings</value>
   </data>
-  <data name="BugFilter" xml:space="preserve">
-    <value>Filter bug by Jira Field</value>
-  </data>
   <data name="BugProperty" xml:space="preserve">
     <value>Bug Property</value>
-  </data>
-  <data name="Equal" xml:space="preserve">
-    <value>=</value>
   </data>
   <data name="MapTitle" xml:space="preserve">
     <value>Mapping the Jira fields with Bugger:</value>
@@ -206,5 +197,8 @@
   </data>
   <data name="SuccessWithError" xml:space="preserve">
     <value>Success with some non-critical problem.</value>
+  </data>
+  <data name="JiraQuerySettingsTitle" xml:space="preserve">
+    <value>Jira Query Settings</value>
   </data>
 </root>

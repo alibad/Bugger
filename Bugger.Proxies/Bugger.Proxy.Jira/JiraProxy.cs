@@ -101,16 +101,14 @@ namespace Bugger.Proxy.Jira
                 }
             }
 
-            this.settingViewModel.BugFilterField = this.document.BugFilterField;
-            this.settingViewModel.BugFilterValue = this.document.BugFilterValue;
+            this.settingViewModel.JqlQuery = this.document.JqlQuery;
             this.settingViewModel.PriorityRed = this.document.PriorityRed;
 
             UpdateSettingDialogPriorityValues();
 
             if (this.CanQuery)
             {
-                if (string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterField)
-                    && string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterValue)
+                if (string.IsNullOrWhiteSpace(this.settingViewModel.JqlQuery)
                     && this.settingViewModel.PropertyMappingCollection
                             .Where(x => !ignoreField.Contains(x.Key))
                             .Any(x =>
@@ -159,8 +157,7 @@ namespace Bugger.Proxy.Jira
             this.jiraFieldsCache.Clear();
             this.jiraFieldsCache.AddRange(this.settingViewModel.JiraFields);
 
-            this.document.BugFilterField = this.settingViewModel.BugFilterField;
-            this.document.BugFilterValue = this.settingViewModel.BugFilterValue;
+            this.document.JqlQuery = this.settingViewModel.JqlQuery;
             this.document.PriorityRed = this.settingViewModel.PriorityRed;
 
             this.CanQuery = false;
@@ -168,9 +165,8 @@ namespace Bugger.Proxy.Jira
             if ((this.settingViewModel.ProgressType == ProgressTypes.Success
                 || this.settingViewModel.ProgressType == ProgressTypes.SuccessWithError)
                 &&
-                (!string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterField)
-                 && !string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterValue)
-                 && this.settingViewModel.PropertyMappingCollection
+                (!string.IsNullOrWhiteSpace(this.settingViewModel.JqlQuery)
+                && this.settingViewModel.PropertyMappingCollection
                          .Where(x => !ignoreField.Contains(x.Key))
                          .Any(x =>
                          {
@@ -217,9 +213,8 @@ namespace Bugger.Proxy.Jira
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterField)
-                || string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterValue)
-                || this.settingViewModel.PropertyMappingCollection
+            if (string.IsNullOrWhiteSpace(this.settingViewModel.JqlQuery)
+                && this.settingViewModel.PropertyMappingCollection
                                         .Where(x => !ignoreField.Contains(x.Key))
                                         .Any(x =>
                                         {
@@ -320,7 +315,7 @@ namespace Bugger.Proxy.Jira
                 {
                     var bugCollection = this.jiraHelper.GetBugs(jira, userName, isFilterCreatedBy,
                                                                this.document.PropertyMappingCollection,
-                                                               this.document.BugFilterField, this.document.BugFilterValue,
+                                                               this.document.JqlQuery,
                                                                redFilter);
                     if (bugCollection == null) { continue; }
 
@@ -424,14 +419,6 @@ namespace Bugger.Proxy.Jira
             if (jiraFields.Any(x => x.Name == "Severity"))
             {
                 this.settingViewModel.PropertyMappingCollection["Severity"] = "Severity";
-            }
-
-            var workItemType = jiraFields.FirstOrDefault(x => x.Name == "Work Item Type");
-            if (workItemType != null)
-            {
-                this.settingViewModel.BugFilterField = "Work Item Type";
-                var value = workItemType.AllowedValues.FirstOrDefault(x => string.Compare(x, "Bugs", true) == 0);
-                this.settingViewModel.BugFilterValue = value ?? string.Empty;
             }
 
             UpdateSettingDialogPriorityValues();

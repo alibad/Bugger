@@ -61,15 +61,6 @@ namespace Bugger.Proxy.Jira.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Filter bug by Jira Field.
-        /// </summary>
-        public static string BugFilter {
-            get {
-                return ResourceManager.GetString("BugFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bug Property.
         /// </summary>
         public static string BugProperty {
@@ -102,15 +93,6 @@ namespace Bugger.Proxy.Jira.Presentation.Properties {
         public static string ConnectSettingsTitle {
             get {
                 return ResourceManager.GetString("ConnectSettingsTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to =.
-        /// </summary>
-        public static string Equal {
-            get {
-                return ResourceManager.GetString("Equal", resourceCulture);
             }
         }
         
@@ -156,6 +138,15 @@ namespace Bugger.Proxy.Jira.Presentation.Properties {
         public static string JiraField {
             get {
                 return ResourceManager.GetString("JiraField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jira Query Settings.
+        /// </summary>
+        public static string JiraQuerySettingsTitle {
+            get {
+                return ResourceManager.GetString("JiraQuerySettingsTitle", resourceCulture);
             }
         }
         
@@ -237,15 +228,6 @@ namespace Bugger.Proxy.Jira.Presentation.Properties {
         public static string Path {
             get {
                 return ResourceManager.GetString("Path", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Port _number:.
-        /// </summary>
-        public static string PortNumber {
-            get {
-                return ResourceManager.GetString("PortNumber", resourceCulture);
             }
         }
         

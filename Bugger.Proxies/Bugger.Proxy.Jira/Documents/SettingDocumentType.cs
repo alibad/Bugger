@@ -51,8 +51,7 @@ namespace Bugger.Proxy.Jira.Documents
             document.ConnectUri = new Uri(root.Element("Uri").Value);
             document.UserName = Decrypt(entropy, root.Element("UserName").Value);
             document.Password = Decrypt(entropy, root.Element("Password").Value);
-            document.BugFilterField = root.Element("BugFilterField").Value;
-            document.BugFilterValue = root.Element("BugFilterValue").Value;
+            document.JqlQuery = root.Element("JqlQuery").Value;
             document.PriorityRed = root.Element("PriorityRed").Value;
 
             IEnumerable<XElement> elements = root.Element("PropertyMappings").Elements();
@@ -86,8 +85,7 @@ namespace Bugger.Proxy.Jira.Documents
                     new XElement("Uri", document.ConnectUri.AbsoluteUri),
                     new XElement("UserName", Encrypt(entropy, document.UserName)),
                     new XElement("Password", Encrypt(entropy, document.Password)),
-                    new XElement("BugFilterField", document.BugFilterField),
-                    new XElement("BugFilterValue", document.BugFilterValue),
+                    new XElement("JqlQuery", document.JqlQuery),
                     new XElement("PriorityRed", document.PriorityRed),
                     propertyMappingElement
                 )
