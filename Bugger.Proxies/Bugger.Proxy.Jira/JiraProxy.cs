@@ -389,37 +389,37 @@ namespace Bugger.Proxy.Jira
         {
             if (jiraFields == null) { throw new ArgumentException("tfsFields"); }
 
-            if (jiraFields.Any(x => x.Name == "ID"))
+            if (jiraFields.Any(x => x.Name == "Key"))
             {
-                this.settingViewModel.PropertyMappingCollection["ID"] = "ID";
+                this.settingViewModel.PropertyMappingCollection["ID"] = "Key";
             }
-            if (jiraFields.Any(x => x.Name == "Title"))
+            if (jiraFields.Any(x => x.Name == "Summary"))
             {
-                this.settingViewModel.PropertyMappingCollection["Title"] = "Title";
+                this.settingViewModel.PropertyMappingCollection["Title"] = "Summary";
             }
             if (jiraFields.Any(x => x.Name == "Description"))
             {
                 this.settingViewModel.PropertyMappingCollection["Description"] = "Description";
             }
-            if (jiraFields.Any(x => x.Name == "Assigned To"))
+            if (jiraFields.Any(x => x.Name == "Assignee"))
             {
-                this.settingViewModel.PropertyMappingCollection["AssignedTo"] = "Assigned To";
+                this.settingViewModel.PropertyMappingCollection["AssignedTo"] = "Assignee";
             }
-            if (jiraFields.Any(x => x.Name == "State"))
+            if (jiraFields.Any(x => x.Name == "Status"))
             {
-                this.settingViewModel.PropertyMappingCollection["State"] = "State";
+                this.settingViewModel.PropertyMappingCollection["State"] = "Status";
             }
-            if (jiraFields.Any(x => x.Name == "Changed Date"))
+            if (jiraFields.Any(x => x.Name == "Updated"))
             {
-                this.settingViewModel.PropertyMappingCollection["ChangedDate"] = "Changed Date";
+                this.settingViewModel.PropertyMappingCollection["ChangedDate"] = "Updated";
             }
-            if (jiraFields.Any(x => x.Name == "Created By"))
+            if (jiraFields.Any(x => x.Name == "Reporter"))
             {
-                this.settingViewModel.PropertyMappingCollection["CreatedBy"] = "Created By";
+                this.settingViewModel.PropertyMappingCollection["CreatedBy"] = "Reporter";
             }
-            if (jiraFields.Any(x => x.Name == "Code Studio Rank"))
+            if (jiraFields.Any(x => x.Name == "Priority"))
             {
-                this.settingViewModel.PropertyMappingCollection["Priority"] = "Code Studio Rank";
+                this.settingViewModel.PropertyMappingCollection["Priority"] = "Priority";
             }
             if (jiraFields.Any(x => x.Name == "Severity"))
             {

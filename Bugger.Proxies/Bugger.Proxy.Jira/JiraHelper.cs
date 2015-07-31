@@ -28,13 +28,10 @@ namespace Bugger.Proxy.Jira
 
         internal IList<JiraField> GetFields()
         {
-            return new List<JiraField>
-            {
-                new JiraField("ID"),
-                new JiraField("Title"),
-                new JiraField("Description"),
-                new JiraField("Assigned To"),
-            };
+            var fields = typeof(SDK.Domain.IssueFields).GetProperties().Select(i => new JiraField(i.Name)).ToList();
+            fields.Add(new JiraField("Key"));
+            fields.Add(new JiraField("Severity"));
+            return fields;
         }
 
         internal IList<Bug> GetBugs(SDK.Jira jira, string userName, bool isFilterCreatedBy, PropertyMappingDictionary propertyMappingCollection, string bugFilterField, string bugFilterValue, List<string> redFilter)
@@ -54,6 +51,7 @@ namespace Bugger.Proxy.Jira
                     Severity = i.Severity,
                     State = i.Status.Name,
                     Title = i.Summary,
+                    Priority = i.Fields.Priority.Name
                 }).ToList();
         }
     }
