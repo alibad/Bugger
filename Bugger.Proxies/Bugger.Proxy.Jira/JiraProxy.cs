@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using JiraConnection = Atlassian.Jira;
 
 namespace Bugger.Proxy.Jira
 {
@@ -208,8 +209,9 @@ namespace Bugger.Proxy.Jira
 
             if (this.settingViewModel.ProgressType == ProgressTypes.NotWorking)
             {
+                JiraConnection.Jira jira = null;
                 if (!jiraHelper.TryConnection(this.settingViewModel.ConnectUri, this.settingViewModel.UserName,
-                                             this.settingViewModel.Password))
+                                             this.settingViewModel.Password, out jira))
                 {
                     return SettingDialogValidateionResult.ConnectFailed;
                 }
@@ -265,8 +267,9 @@ namespace Bugger.Proxy.Jira
             }
 
             //  Connect to Jira
+            JiraConnection.Jira jira;
             if (!jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName,
-                                        this.document.Password))
+                                        this.document.Password, out jira))
             {
                 return;
             }
@@ -302,8 +305,9 @@ namespace Bugger.Proxy.Jira
                 return new ReadOnlyCollection<Bug>(bugs);
             }
 
+            JiraConnection.Jira jira;
             if (jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName,
-                                        this.document.Password))
+                                        this.document.Password, out jira))
             {
                 List<string> redFilter = string.IsNullOrWhiteSpace(this.document.PriorityRed)
                                            ? new List<string>()
@@ -314,7 +318,7 @@ namespace Bugger.Proxy.Jira
 
                 foreach (string userName in userNames)
                 {
-                    var bugCollection = this.jiraHelper.GetBugs(userName, isFilterCreatedBy,
+                    var bugCollection = this.jiraHelper.GetBugs(jira, userName, isFilterCreatedBy,
                                                                this.document.PropertyMappingCollection,
                                                                this.document.BugFilterField, this.document.BugFilterValue,
                                                                redFilter);
@@ -480,8 +484,9 @@ namespace Bugger.Proxy.Jira
             var testConnectionTask = Task.Factory.StartNew(() =>
             {
                 //  Connect
+                JiraConnection.Jira jira;
                 jiraHelper.TryConnection(this.settingViewModel.ConnectUri, this.settingViewModel.UserName,
-                                             this.settingViewModel.Password);
+                                             this.settingViewModel.Password, out jira);
 
                 return "";
             })
