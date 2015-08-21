@@ -104,6 +104,7 @@ namespace Bugger.Proxy.Jira
             this.settingViewModel.BugFilterField = this.document.BugFilterField;
             this.settingViewModel.BugFilterValue = this.document.BugFilterValue;
             this.settingViewModel.PriorityRed = this.document.PriorityRed;
+            this.settingViewModel.JqlQuery = this.document.JqlQuery;
 
             UpdateSettingDialogPriorityValues();
 
@@ -162,6 +163,7 @@ namespace Bugger.Proxy.Jira
             this.document.BugFilterField = this.settingViewModel.BugFilterField;
             this.document.BugFilterValue = this.settingViewModel.BugFilterValue;
             this.document.PriorityRed = this.settingViewModel.PriorityRed;
+            this.document.JqlQuery = this.settingViewModel.JqlQuery;
 
             this.CanQuery = false;
 
@@ -170,6 +172,7 @@ namespace Bugger.Proxy.Jira
                 &&
                 (!string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterField)
                  && !string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterValue)
+                 && !string.IsNullOrWhiteSpace(this.settingViewModel.JqlQuery)
                  && this.settingViewModel.PropertyMappingCollection
                          .Where(x => !ignoreField.Contains(x.Key))
                          .Any(x =>
@@ -219,6 +222,7 @@ namespace Bugger.Proxy.Jira
 
             if (string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterField)
                 || string.IsNullOrWhiteSpace(this.settingViewModel.BugFilterValue)
+                || string.IsNullOrWhiteSpace(this.settingViewModel.JqlQuery)
                 || this.settingViewModel.PropertyMappingCollection
                                         .Where(x => !ignoreField.Contains(x.Key))
                                         .Any(x =>
@@ -320,7 +324,9 @@ namespace Bugger.Proxy.Jira
                 {
                     var bugCollection = this.jiraHelper.GetBugs(jira, userName, isFilterCreatedBy,
                                                                this.document.PropertyMappingCollection,
-                                                               this.document.BugFilterField, this.document.BugFilterValue,
+                                                               this.document.BugFilterField, 
+                                                               this.document.BugFilterValue, 
+                                                               this.document.JqlQuery,
                                                                redFilter);
                     if (bugCollection == null) { continue; }
 

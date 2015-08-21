@@ -207,4 +207,7 @@
   <data name="SuccessWithError" xml:space="preserve">
     <value>Success with some non-critical problem.</value>
   </data>
+  <data name="JiraQuerySettingsTitle" xml:space="preserve">
+    <value>Jira Query Settings</value>
+  </data>
 </root>

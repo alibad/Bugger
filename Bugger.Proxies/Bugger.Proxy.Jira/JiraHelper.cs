@@ -34,10 +34,10 @@ namespace Bugger.Proxy.Jira
             return fields;
         }
 
-        internal IList<Bug> GetBugs(SDK.Jira jira, string userName, bool isFilterCreatedBy, PropertyMappingDictionary propertyMappingCollection, string bugFilterField, string bugFilterValue, List<string> redFilter)
+        internal IList<Bug> GetBugs(SDK.Jira jira, string userName, bool isFilterCreatedBy, PropertyMappingDictionary propertyMappingCollection, string bugFilterField, string bugFilterValue, string jqlQuery, List<string> redFilter)
         {
             var filter = new SDK.Domain.IssueFilter();
-            filter.JQL = $"assignee = {userName} and Sprint in openSprints()";
+            filter.JQL = jqlQuery.Replace("{userame}", userName);
             filter.SetJira(jira);
             var issues = filter.GetIssues();
 

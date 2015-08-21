@@ -160,6 +160,15 @@ namespace Bugger.Proxy.Jira.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jira Query Settings.
+        /// </summary>
+        public static string JiraQuerySettingsTitle {
+            get {
+                return ResourceManager.GetString("JiraQuerySettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mapping Settings.
         /// </summary>
         public static string MappingSettingsTitle {

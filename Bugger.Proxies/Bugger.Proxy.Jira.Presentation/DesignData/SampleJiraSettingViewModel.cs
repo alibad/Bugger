@@ -18,6 +18,7 @@ namespace Bugger.Proxy.Jira.Presentation.DesignData
             this.BugFilterValue = "Bugs";
             this.UserName = "abadereddin";
             this.Password = "Password";
+            this.JqlQuery = "assignee = {userame} and Sprint in openSprints()";
 
             this.PriorityValues.Add(new CheckString("High"));
             this.PriorityValues.Add(new CheckString("Medium"));

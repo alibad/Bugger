@@ -22,7 +22,8 @@ namespace Bugger.Proxy.Jira.ViewModels
         private string bugFilterField;
         private string bugFilterValue;
         private string priorityRed;
-        
+        private string jqlQuery;
+
         private ICommand testConnectionCommand;
 
         private ProgressTypes progressType;
@@ -124,6 +125,19 @@ namespace Bugger.Proxy.Jira.ViewModels
             }
         }
 
+        public string JqlQuery
+        {
+            get { return this.jqlQuery; }
+            set
+            {
+                if (this.jqlQuery != value)
+                {
+                    this.jqlQuery = value;
+                    RaisePropertyChanged("JqlQuery");
+                }
+            }
+        }
+
         public string PriorityRed
         {
             get { return this.priorityRed; }
@@ -190,6 +204,8 @@ namespace Bugger.Proxy.Jira.ViewModels
             BugFilterField = string.Empty;
             BugFilterValue = string.Empty;
             PriorityRed = string.Empty;
+
+            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
 
             ProgressType = ProgressTypes.NotWorking;
             ProgressValue = 0;

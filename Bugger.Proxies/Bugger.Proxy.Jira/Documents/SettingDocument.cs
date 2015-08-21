@@ -28,6 +28,7 @@ namespace Bugger.Proxy.Jira.Documents
             BugFilterField = string.Empty;
             BugFilterValue = string.Empty;
             PriorityRed = string.Empty;
+            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
         }
 
         #region Properties
@@ -44,6 +45,9 @@ namespace Bugger.Proxy.Jira.Documents
         public string BugFilterValue { get; set; }
 
         public string PriorityRed { get; set; }
+
+        public string JqlQuery { get; set; }
+
         #endregion
     }
 }
