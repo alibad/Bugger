@@ -92,7 +92,7 @@ namespace Bugger.Proxy.Jira
                 userName = Environment.UserName;
             }
 
-            this.settingViewModel.ConnectUri = this.document.ConnectUri ?? new Uri("https://jira.<placeholder>.com");
+            this.settingViewModel.ConnectUri = this.document.ConnectUri ?? new Uri("https://jira.practicefusion.com");
             this.settingViewModel.UserName = userName;
             this.settingViewModel.Password = this.document.Password;
 
