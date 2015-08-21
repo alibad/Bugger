@@ -29,7 +29,6 @@ namespace Bugger.Proxy.Jira
         private SettingDocument document;
         private JiraSettingViewModel settingViewModel;
 
-        private string stateColumn = string.Empty;
         private readonly ObservableCollection<string> stateValues;
         private List<string> ignoreField;
         private const string PriorityRedSeparator = ";";
@@ -56,7 +55,7 @@ namespace Bugger.Proxy.Jira
             this.testConnectionCommand = new DelegateCommand(TestConnectionCommandExcute, CanTestConnectionCommandExcute);
 
             this.jiraFieldsCache = new List<JiraField>();
-            this.stateValues = new ObservableCollection<string>();
+            this.stateValues = new ObservableCollection<string> { "Open", "Closed", "Accepted"};
             this.priorityValues = new List<string>() { "None", "Low", "Medium", "High" };
 
             this.CanQuery = false;
@@ -149,7 +148,6 @@ namespace Bugger.Proxy.Jira
 
             if (!submit)
             {
-                UpdateStateValues(this.document.PropertyMappingCollection["State"], this.jiraFieldsCache);
                 return;
             }
 
@@ -283,7 +281,6 @@ namespace Bugger.Proxy.Jira
             if (fields == null || !fields.Any()) { return; }
 
             this.jiraFieldsCache.AddRange(jiraHelper.GetFields());
-            UpdateStateValues(this.document.PropertyMappingCollection["State"], this.jiraFieldsCache);
             this.CanQuery = true;
         }
 
@@ -375,20 +372,6 @@ namespace Bugger.Proxy.Jira
                                                                                  .Select(x => x.Name));
         }
 
-        private void UpdateStateValues(string stateFieldName, ICollection<JiraField> jiraFields)
-        {
-            var field = jiraFields.FirstOrDefault(x => x.Name == stateFieldName);
-            if (field != null && field.Name != stateColumn)
-            {
-                stateColumn = field.Name;
-                StateValues.Clear();
-                foreach (var value in field.AllowedValues)
-                {
-                    StateValues.Add(value);
-                }
-            }
-        }
-
         private void AutoFillMapSettings(IList<JiraField> jiraFields)
         {
             if (jiraFields == null) { throw new ArgumentException("tfsFields"); }
@@ -438,7 +421,6 @@ namespace Bugger.Proxy.Jira
             if (e.PropertyName == "PropertyMappingCollection")
             {
                 UpdateSettingDialogPriorityValues();
-                UpdateStateValues(this.settingViewModel.PropertyMappingCollection["State"], this.settingViewModel.JiraFields);
             }
             else if (e.PropertyName == "ConnectUri" || e.PropertyName == "UserName" || e.PropertyName == "Password")
             {
