@@ -29,7 +29,7 @@ namespace Bugger.Proxy.Jira.Documents
             JqlQuery = JqlQueries.AssignedToMeInOpensprints;
             BugFilterValue = string.Empty;
             PriorityRed = string.Empty;
-            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
+            JqlQuery = "assignee = {username} and Sprint in openSprints()";
         }
 
         #region Properties

@@ -212,7 +212,7 @@ namespace Bugger.Proxy.Jira.ViewModels
             BugFilterValue = string.Empty;
             PriorityRed = string.Empty;
 
-            JqlQuery = "assignee = {userame} and Sprint in openSprints()";
+            JqlQuery = "assignee = {username} and Sprint in openSprints()";
 
             ProgressType = ProgressTypes.NotWorking;
             ProgressValue = 0;

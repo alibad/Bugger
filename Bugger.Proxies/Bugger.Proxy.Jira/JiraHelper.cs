@@ -37,7 +37,7 @@ namespace Bugger.Proxy.Jira
         internal IList<Bug> GetBugs(SDK.Jira jira, string userName, bool isFilterCreatedBy, PropertyMappingDictionary propertyMappingCollection, string bugFilterField, string bugFilterValue, string jqlQuery, List<string> redFilter)
         {
             var filter = new SDK.Domain.IssueFilter();
-            filter.JQL = jqlQuery.Replace("{userame}", userName);
+            filter.JQL = jqlQuery.Replace("{username}", userName);
             filter.SetJira(jira);
             var issues = filter.GetIssues();
 
