@@ -395,7 +395,7 @@ namespace Bugger.Proxy.Jira
 
         private void AutoFillMapSettings(IList<JiraField> jiraFields)
         {
-            if (jiraFields == null) { throw new ArgumentException("tfsFields"); }
+            if (jiraFields == null) { throw new ArgumentException("jiraFields"); }
 
             if (jiraFields.Any(x => x.Name == "Key"))
             {
@@ -429,9 +429,9 @@ namespace Bugger.Proxy.Jira
             {
                 this.settingViewModel.PropertyMappingCollection["Priority"] = "Priority";
             }
-            if (jiraFields.Any(x => x.Name == "Severity"))
+            if (jiraFields.Any(x => x.Name == "None"))
             {
-                this.settingViewModel.PropertyMappingCollection["Severity"] = "Severity";
+                this.settingViewModel.PropertyMappingCollection["Severity"] = "None";
             }
 
             UpdateSettingDialogPriorityValues();

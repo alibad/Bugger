@@ -80,7 +80,7 @@ namespace Bugger.Domain.Models
         /// The System.DateTime object that represents the date and time that this bug 
         /// was last changed.
         /// </value>
-        public DateTime ChangedDate { get; set; }
+        public DateTime? ChangedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the string value of the user who created this bug.
