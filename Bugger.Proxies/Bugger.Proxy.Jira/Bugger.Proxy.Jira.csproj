@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Documents\SettingDocument.cs" />
     <Compile Include="Documents\SettingDocumentType.cs" />
+    <Compile Include="JiraClientWrapper.cs" />
     <Compile Include="JiraHelper.cs" />
     <Compile Include="JiraProxy.cs" />
     <Compile Include="JqlQueries.cs" />

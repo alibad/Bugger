@@ -40,6 +40,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\Images\Bugger.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Bugger.Presentation.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

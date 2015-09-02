@@ -11,17 +11,17 @@ namespace Bugger.Proxy.Jira
     [Export]
     public class JiraHelper
     {
-        internal bool TryConnection(Uri connectUri, string userName, string password, out SDK.Jira jira)
+        internal bool TryConnection(Uri connectUri, string userName, string password, out JiraClientWrapper jiraClientWrapper)
         {
             try
             {
-                jira = new SDK.Jira();
-                jira.Connect(connectUri.AbsoluteUri, userName, password);
+                jiraClientWrapper = new JiraClientWrapper(connectUri.AbsoluteUri, userName, password);
+                jiraClientWrapper.Jira.Connect(connectUri.AbsoluteUri, userName, password);
                 return true;
             }
             catch
             {
-                jira = null;
+                jiraClientWrapper = null;
                 return false;
             }
         }

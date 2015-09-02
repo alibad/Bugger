@@ -16,7 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using JiraConnection = Jira.SDK;
+using SDK = Jira.SDK;
 
 namespace Bugger.Proxy.Jira
 {
@@ -148,6 +148,7 @@ namespace Bugger.Proxy.Jira
 
             if (!submit)
             {
+                UpdateStateValues();
                 return;
             }
 
@@ -186,6 +187,22 @@ namespace Bugger.Proxy.Jira
             SettingDocumentType.Save(this.document);
         }
 
+        private void UpdateStateValues()
+        {
+            JiraClientWrapper jiraClientWrapper = null;
+            if (jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName, this.document.Password, out jiraClientWrapper))
+            {
+                StateValues.Clear();
+
+                var statuses = jiraClientWrapper.GetStatuses();
+
+                foreach (var status in statuses)
+                {
+                    StateValues.Add(status.Name);
+                }
+            }
+        }
+
         /// <summary>
         /// Validate the setting values before close setting dialog.
         /// </summary>
@@ -212,9 +229,9 @@ namespace Bugger.Proxy.Jira
 
             if (this.settingViewModel.ProgressType == ProgressTypes.NotWorking)
             {
-                JiraConnection.Jira jira = null;
+                JiraClientWrapper jiraClientWrapper = null;
                 if (!jiraHelper.TryConnection(this.settingViewModel.ConnectUri, this.settingViewModel.UserName,
-                                             this.settingViewModel.Password, out jira))
+                                             this.settingViewModel.Password, out jiraClientWrapper))
                 {
                     return SettingDialogValidateionResult.ConnectFailed;
                 }
@@ -269,9 +286,9 @@ namespace Bugger.Proxy.Jira
             }
 
             //  Connect to Jira
-            JiraConnection.Jira jira;
+            JiraClientWrapper jiraClientWrapper = null;
             if (!jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName,
-                                        this.document.Password, out jira))
+                                        this.document.Password, out jiraClientWrapper))
             {
                 return;
             }
@@ -281,6 +298,7 @@ namespace Bugger.Proxy.Jira
             if (fields == null || !fields.Any()) { return; }
 
             this.jiraFieldsCache.AddRange(jiraHelper.GetFields());
+            UpdateStateValues();
             this.CanQuery = true;
         }
 
@@ -306,9 +324,9 @@ namespace Bugger.Proxy.Jira
                 return new ReadOnlyCollection<Bug>(bugs);
             }
 
-            JiraConnection.Jira jira;
+            JiraClientWrapper jiraClientWrapper = null;
             if (jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName,
-                                        this.document.Password, out jira))
+                                        this.document.Password, out jiraClientWrapper))
             {
                 List<string> redFilter = string.IsNullOrWhiteSpace(this.document.PriorityRed)
                                            ? new List<string>()
@@ -319,7 +337,7 @@ namespace Bugger.Proxy.Jira
 
                 foreach (string userName in userNames)
                 {
-                    var bugCollection = this.jiraHelper.GetBugs(jira, userName, isFilterCreatedBy,
+                    var bugCollection = this.jiraHelper.GetBugs(jiraClientWrapper.Jira, userName, isFilterCreatedBy,
                                                                this.document.PropertyMappingCollection,
                                                                this.document.JqlQuery,
                                                                redFilter);
@@ -421,6 +439,7 @@ namespace Bugger.Proxy.Jira
             if (e.PropertyName == "PropertyMappingCollection")
             {
                 UpdateSettingDialogPriorityValues();
+                UpdateStateValues();
             }
             else if (e.PropertyName == "ConnectUri" || e.PropertyName == "UserName" || e.PropertyName == "Password")
             {
@@ -462,11 +481,11 @@ namespace Bugger.Proxy.Jira
             var testConnectionTask = Task.Factory.StartNew(() =>
             {
                 //  Connect
-                JiraConnection.Jira jira;
+                JiraClientWrapper jiraClientWrapper = null;
                 jiraHelper.TryConnection(this.settingViewModel.ConnectUri, this.settingViewModel.UserName,
-                                             this.settingViewModel.Password, out jira);
+                                             this.settingViewModel.Password, out jiraClientWrapper);
 
-                return jira;
+                return jiraClientWrapper.Jira;
             })
             .ContinueWith(task =>
             {
