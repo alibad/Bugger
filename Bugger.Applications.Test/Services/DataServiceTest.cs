@@ -26,7 +26,7 @@ namespace Bugger.Applications.Test.Services
             dataService.UserBugs.Add(
                 new Bug()
                 {
-                    ID = 1,
+                    ID = "1",
                     Title = "Bug1",
                     Description = "Description for Bug1.",
                     Type = BugType.Red,
@@ -44,7 +44,7 @@ namespace Bugger.Applications.Test.Services
             dataService.UserBugs.Add(
                 new Bug()
                 {
-                    ID = 6,
+                    ID = "6",
                     Title = "Bug6",
                     Description = "Description for Bug6.",
                     AssignedTo = "Pupil",
@@ -63,7 +63,7 @@ namespace Bugger.Applications.Test.Services
             dataService.TeamBugs.Add(
                 new Bug()
                 {
-                    ID = 5,
+                    ID = "5",
                     Title = "Bug5",
                     Description = "Description for Bug5.",
                     Type = BugType.Red,

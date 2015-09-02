@@ -44,7 +44,7 @@ namespace Bugger.Proxy.Jira
             return issues.Select(i =>
                 new Bug
                 {
-                    ID = i.Key.GetHashCode(),
+                    ID = i.Key,
                     AssignedTo = i.Assignee.Username,
                     CreatedBy = i.Reporter.Username,
                     Description = i.Description,

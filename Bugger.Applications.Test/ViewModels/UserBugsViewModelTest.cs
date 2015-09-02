@@ -23,7 +23,7 @@ namespace Bugger.Applications.Test.ViewModels
             dataService.UserBugs.Add(
                 new Bug()
                 {
-                    ID = 1,
+                    ID = "1",
                     Title = "Bug1",
                     Description = "Description for Bug1.",
                     Type = BugType.Red,
@@ -38,7 +38,7 @@ namespace Bugger.Applications.Test.ViewModels
             dataService.UserBugs.Add(
                 new Bug()
                 {
-                    ID = 6,
+                    ID = "6",
                     Title = "Bug6",
                     Description = "Description for Bug6.",
                     AssignedTo = "Pupil",

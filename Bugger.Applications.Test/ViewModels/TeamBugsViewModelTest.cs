@@ -22,7 +22,7 @@ namespace Bugger.Applications.Test.ViewModels
             dataService.TeamBugs.Add(
                 new Bug()
                 {
-                    ID = 5,
+                    ID = "5",
                     Title = "Bug5",
                     Description = "Description for Bug5.",
                     Type = BugType.Red,

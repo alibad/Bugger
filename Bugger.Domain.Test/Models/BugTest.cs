@@ -12,7 +12,7 @@ namespace Bugger.Domain.Test.Models
         {
             Bug item = new Bug()
             {
-                ID           = 123,
+                ID           = "123",
                 Title        = "Bug A",
                 Description  = "Bug Description.",
                 Type         = BugType.Red,
@@ -44,7 +44,7 @@ namespace Bugger.Domain.Test.Models
         {
             Bug item1 = new Bug()
             {
-                ID = 123,
+                ID = "123",
                 Title = "Bug A",
                 Description = "Bug Description.",
                 Type = BugType.Red,
@@ -58,7 +58,7 @@ namespace Bugger.Domain.Test.Models
 
             Bug item2 = new Bug()
             {
-                ID = 124,
+                ID = "124",
                 Title = "Bug A",
                 Description = "Bug Description.",
                 Type = BugType.Red,
@@ -72,7 +72,7 @@ namespace Bugger.Domain.Test.Models
 
             Bug item3 = new Bug()
             {
-                ID = 124,
+                ID = "124",
                 Title = "Bug A",
                 Description = "Bug Description.",
                 Type = BugType.Red,

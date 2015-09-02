@@ -8,7 +8,7 @@ namespace Bugger.Domain.Models
     public class Bug : IEquatable<Bug>
     {
         #region Fields
-        private int id;
+        private string id;
         private string title;
         private string description;
         private BugType type;
@@ -47,7 +47,7 @@ namespace Bugger.Domain.Models
         /// <value>
         /// The ID of this bug.
         /// </value>
-        public int ID
+        public string ID
         {
             get { return this.id; }
             set { this.id = value; }

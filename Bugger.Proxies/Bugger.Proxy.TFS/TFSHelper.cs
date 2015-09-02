@@ -171,7 +171,7 @@ namespace Bugger.Proxy.TFS
 
             //  ID
             value = workitem.Fields[propertyMappingList["ID"]].Value;
-            bug.ID = value == null ? 0 : (int)value;
+            bug.ID = value == null ? string.Empty : value.ToString();
 
             //  Title
             value = workitem.Fields[propertyMappingList["Title"]].Value;

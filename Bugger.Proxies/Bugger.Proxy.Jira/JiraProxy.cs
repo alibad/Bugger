@@ -37,6 +37,8 @@ namespace Bugger.Proxy.Jira
 
         private readonly DelegateCommand testConnectionCommand;
 
+        private bool statusTypesLoaded = false;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JiraProxy" /> class.
         /// </summary>
@@ -55,7 +57,7 @@ namespace Bugger.Proxy.Jira
             this.testConnectionCommand = new DelegateCommand(TestConnectionCommandExcute, CanTestConnectionCommandExcute);
 
             this.jiraFieldsCache = new List<JiraField>();
-            this.stateValues = new ObservableCollection<string> { "Open", "Closed", "Accepted"};
+            this.stateValues = new ObservableCollection<string>();
             this.priorityValues = new List<string>() { "None", "Low", "Medium", "High" };
 
             this.CanQuery = false;
@@ -190,8 +192,9 @@ namespace Bugger.Proxy.Jira
         private void UpdateStateValues()
         {
             JiraClientWrapper jiraClientWrapper = null;
-            if (jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName, this.document.Password, out jiraClientWrapper))
+            if (!statusTypesLoaded && jiraHelper.TryConnection(this.document.ConnectUri, this.document.UserName, this.document.Password, out jiraClientWrapper))
             {
+                statusTypesLoaded = true;
                 StateValues.Clear();
 
                 var statuses = jiraClientWrapper.GetStatuses();
