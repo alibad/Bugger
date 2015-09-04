@@ -92,6 +92,17 @@ namespace Bugger.Applications.Controllers
             this.dataService.UserBugsProgressValue = 0;
             this.dataService.TeamBugsProgressValue = 0;
             this.timerStarted = true;
+
+            RefreshBugVisiblefields();
+        }
+
+        private void RefreshBugVisiblefields()
+        {
+            this.dataService.VisibleBugFields.Clear();
+            foreach (var field in this.ActiveProxy.GetVisibleBugFields())
+            {
+                dataService.VisibleBugFields.Add(field);
+            }
         }
 
         public void TimerStop()
@@ -134,6 +145,8 @@ namespace Bugger.Applications.Controllers
             this.dataService.TeamBugsQueryState = QueryStatus.NotWorking;
             this.dataService.RefreshTime = DateTime.Now;
 
+            RefreshBugVisiblefields();
+
             if (!string.IsNullOrWhiteSpace(Settings.Default.UserName))
             {
                 this.dataService.UserBugsQueryState = QueryStatus.Qureying;
@@ -147,6 +160,7 @@ namespace Bugger.Applications.Controllers
                 {
                     this.dataService.UserBugsQueryState = QueryStatus.FillingData;
                     this.dataService.UserBugsProgressValue = 50;
+
                     UpdateCommands();
                     return task.Result;
                 }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, currentSynchronizationTaskScheduler)

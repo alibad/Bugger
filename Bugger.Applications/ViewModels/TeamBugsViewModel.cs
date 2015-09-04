@@ -23,6 +23,11 @@ namespace Bugger.Applications.ViewModels
 
         #region Properties
         public ObservableCollection<Bug> Bugs { get { return this.dataService.TeamBugs; } }
+        public ObservableCollection<string> VisibleBugFields
+        {
+            get { return this.dataService.VisibleBugFields; }
+        }
+
         #endregion
     }
 }

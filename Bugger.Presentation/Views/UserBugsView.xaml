@@ -25,7 +25,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Margin="5,0" Text="{x:Static p:Resources.UserBugs}" VerticalAlignment="Bottom"/>
-        <DataGrid ItemsSource="{Binding Mode=OneWay, Source={StaticResource groupedBugs}}" FrozenColumnCount="2" Margin="5" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="BugDataGrid" ItemsSource="{Binding Mode=OneWay, Source={StaticResource groupedBugs}}" FrozenColumnCount="2" Margin="5" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
@@ -45,10 +45,12 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                        <Expander>
+                                        <Expander IsExpanded="True">
                                             <Expander.Header>
                                                 <StackPanel Orientation="Horizontal">
+                                                    <!--
                                                     <Image HorizontalAlignment="Center" Height="16" Width="16" VerticalAlignment="Center" Source="{Binding Name, Converter={x:Static c:BugTypeToImageConverter.Default}}"/>
+                                                    -->
                                                     <TextBlock Text="{Binding ItemCount, StringFormat=' Bugs (0)'}"/>
                                                 </StackPanel>
                                             </Expander.Header>

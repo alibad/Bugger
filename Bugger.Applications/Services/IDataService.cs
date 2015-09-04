@@ -12,6 +12,8 @@ namespace Bugger.Applications.Services
 
         MultiThreadingObservableCollection<Bug> TeamBugs { get; }
 
+        MultiThreadingObservableCollection<string> VisibleBugFields { get; }
+
         DateTime RefreshTime { get; set; }
 
         QueryStatus UserBugsQueryState { get; set; }

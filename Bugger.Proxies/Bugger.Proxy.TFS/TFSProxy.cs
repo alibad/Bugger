@@ -345,6 +345,25 @@ namespace Bugger.Proxy.TFS
                 return new ReadOnlyCollection<Bug>(bugs);
             }
         }
+
+        public override ReadOnlyCollection<string> GetVisibleBugFields()
+        {
+            var visibleFields = new List<string>();
+
+            if (document != null && document.PropertyMappingCollection != null)
+            {
+                foreach (var propertyMapping in document.PropertyMappingCollection)
+                {
+                    if (!string.IsNullOrEmpty(propertyMapping.Value) && propertyMapping.Value != "None")
+                    {
+                        visibleFields.Add(propertyMapping.Key);
+                    }
+                }
+            }
+
+            return new ReadOnlyCollection<string>(visibleFields);
+        }
+
         #endregion
 
         #region Private Methods

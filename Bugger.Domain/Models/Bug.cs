@@ -7,25 +7,11 @@ namespace Bugger.Domain.Models
     /// </summary>
     public class Bug : IEquatable<Bug>
     {
-        #region Fields
-        private int id;
-        private string title;
-        private string description;
-        private BugType type;
-        private string assignedTo;
-        private string state;
-        private DateTime changedDate;
-        private string createdBy;
-        private string priority;
-        private string severity;        
-        #endregion
-
         public Bug()
         {
-            this.type = BugType.Yellow;
+            this.Type = BugType.Yellow;
         }
-
-        #region Implement IEquatable interface
+        
         public bool Equals(Bug other)
         {
             return this.ID == other.ID
@@ -38,44 +24,29 @@ namespace Bugger.Domain.Models
                 && this.Priority == other.Priority
                 && this.Severity == other.Severity;
         }
-        #endregion
-
-        #region Properties
         /// <summary>
-        /// Gets the ID of this bug.
+        /// Gets or sets the ID of this bug.
         /// </summary>
         /// <value>
         /// The ID of this bug.
         /// </value>
-        public int ID
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }
+        public string ID { get; set; }
 
         /// <summary>
-        /// Gets a string that describes the title of this bug
+        /// Gets or sets a string that describes the title of this bug
         /// </summary>
         /// <value>
         /// A string that describes the title of this bug.
         /// </value>
-        public string Title
-        {
-            get { return this.title; }
-            set { this.title = value; }
-        }
+        public string Title { get; set; }
 
         /// <summary>
-        /// Gets a string that describes this bug.
+        /// Gets or sets a string that describes this bug.
         /// </summary>
         /// <value>
         /// A string that describes this bug.
         /// </value>
-        public string Description
-        {
-            get { return this.description; }
-            set { this.description = value; }
-        }
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the type of this bug..
@@ -83,85 +54,56 @@ namespace Bugger.Domain.Models
         /// <value>
         /// The type of this bug.
         /// </value>
-        public BugType Type
-        {
-            get { return type; }
-            set { type = value; }
-        }
+        public BugType Type { get; set; }
 
         /// <summary>
-        /// Gets the string value of the user who this bug currently be assigned to.
+        /// Gets or sets the string value of the user who this bug currently be assigned to.
         /// </summary>
         /// <value>
         /// The string value of the user who this bug currently be assigned to.
         /// </value>
-        public string AssignedTo
-        {
-            get { return this.assignedTo; }
-            set { this.assignedTo = value; }
-        }
+        public string AssignedTo { get; set; }
 
         /// <summary>
-        /// Gets a string that describes the state of this bug.
+        /// Gets or sets a string that describes the state of this bug.
         /// </summary>
         /// <value>
         /// A string that describes the state of this bug.
         /// </value>
-        public string State
-        {
-            get { return this.state; }
-            set { this.state = value; }
-        }
+        public string State { get; set; }
 
         /// <summary>
-        /// Gets the System.DateTime object that represents the date and time that this
+        /// Gets or sets the System.DateTime object that represents the date and time that this
         /// bug was last changed.
         /// </summary>
         /// <value>
         /// The System.DateTime object that represents the date and time that this bug 
         /// was last changed.
         /// </value>
-        public DateTime ChangedDate
-        {
-            get { return this.changedDate; }
-            set { this.changedDate = value; }
-        }
+        public DateTime? ChangedDate { get; set; }
 
         /// <summary>
-        /// Gets the string value of the user who created this bug.
+        /// Gets or sets the string value of the user who created this bug.
         /// </summary>
         /// <value>
         /// The string value of the user who created this bug.
         /// </value>
-        public string CreatedBy
-        {
-            get { return this.createdBy; }
-            set { this.createdBy = value; }
-        }
+        public string CreatedBy { get; set; }
 
         /// <summary>
-        /// Gets a string that describes the priority of this bug.
+        /// Gets or sets a string that describes the priority of this bug.
         /// </summary>
         /// <value>
         /// A string that describes the priority of this bug.
         /// </value>
-        public string Priority
-        {
-            get { return priority; }
-            set { priority = value; }
-        }
+        public string Priority { get; set; }
 
         /// <summary>
-        /// Gets a string that describes the severity of this bug.
+        /// Gets or sets a string that describes the severity of this bug.
         /// </summary>
         /// <value>
         /// A string that describes the severity of this bug.
         /// </value>
-        public string Severity
-        {
-            get { return severity; }
-            set { severity = value; }
-        }
-        #endregion
+        public string Severity { get; set; }
     }
 }

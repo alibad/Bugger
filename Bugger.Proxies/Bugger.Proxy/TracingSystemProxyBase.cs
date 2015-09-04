@@ -138,6 +138,11 @@ namespace Bugger.Proxy
             return QueryCore(teamMembers, isFilterCreatedBy);
         }
 
+        public virtual ReadOnlyCollection<string> GetVisibleBugFields()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Initializes the values before open the setting dialog.
         /// </summary>

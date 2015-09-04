@@ -40,7 +40,7 @@ namespace Bugger.Presentation.DesignData
         {
             this.bugs.Add(new Bug()
             {
-                ID = 1,
+                ID = "1",
                 Title = "Bug1",
                 Description = "Description for Bug1.",
                 Type = BugType.Red,
@@ -53,7 +53,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 2,
+                ID = "2",
                 Title = "Bug2",
                 Description = "Description for Bug2.",
                 Type = BugType.Red,
@@ -66,7 +66,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 3,
+                ID = "3",
                 Title = "Bug3",
                 Description = "Description for Bug3.",
                 Type = BugType.Red,
@@ -79,7 +79,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 4,
+                ID = "4",
                 Title = "Bug4",
                 Description = "Description for Bug4.",
                 Type = BugType.Red,
@@ -93,7 +93,7 @@ namespace Bugger.Presentation.DesignData
 
             this.bugs.Add(new Bug()
             {
-                ID = 5,
+                ID = "5",
                 Title = "Bug5",
                 Description = "Description for Bug5.",
                 Type = BugType.Red,
@@ -106,7 +106,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 6,
+                ID = "6",
                 Title = "Bug6",
                 Description = "Description for Bug6.",
                 AssignedTo = "Pupil",
@@ -118,7 +118,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 7,
+                ID = "7",
                 Title = "Bug7",
                 Description = "Description for Bug7.",
                 AssignedTo = "User1",
@@ -130,7 +130,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 8,
+                ID = "8",
                 Title = "Bug8",
                 Description = "Description for Bug8.",
                 Type = BugType.Red,
@@ -143,7 +143,7 @@ namespace Bugger.Presentation.DesignData
 
             this.bugs.Add(new Bug()
             {
-                ID = 9,
+                ID = "9",
                 Title = "Bug9",
                 Description = "Description for Bug9.",
                 AssignedTo = "BigEgg",
@@ -155,7 +155,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 10,
+                ID = "10",
                 Title = "Bug10",
                 Description = "Description for Bug10.",
                 Type = BugType.Red,
@@ -168,7 +168,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 11,
+                ID = "11",
                 Title = "Bug11",
                 Description = "Description for Bug11.",
                 Type = BugType.Red,
@@ -181,7 +181,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 12,
+                ID = "12",
                 Title = "Bug12",
                 Description = "Description for Bug12.",
                 Type = BugType.Red,
@@ -195,7 +195,7 @@ namespace Bugger.Presentation.DesignData
 
             this.bugs.Add(new Bug()
             {
-                ID = 13,
+                ID = "13",
                 Title = "Bug13",
                 Description = "Description for Bug13.",
                 Type = BugType.Red,
@@ -208,7 +208,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 14,
+                ID = "14",
                 Title = "Bug14",
                 Description = "Description for Bug14.",
                 AssignedTo = "Pupil",
@@ -220,7 +220,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 15,
+                ID = "15",
                 Title = "Bug15",
                 Description = "Description for Bug15.",
                 AssignedTo = "User1",
@@ -232,7 +232,7 @@ namespace Bugger.Presentation.DesignData
             });
             this.bugs.Add(new Bug()
             {
-                ID = 16,
+                ID = "16",
                 Title = "Bug16",
                 Description = "Description for Bug16.",
                 AssignedTo = "User2",
