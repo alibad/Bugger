@@ -77,31 +77,31 @@ namespace Bugger.Proxy.Jira
             Bug bug = new Bug();
 
             //  ID
-            bug.ID = MapValue<string>("ID", valuesToMap, propertyMappingList);
+            bug.ID = MapValue<string>(nameof(bug.ID), valuesToMap, propertyMappingList);
 
             //  Title
-            bug.Title = MapValue<string>("Title", valuesToMap, propertyMappingList);
+            bug.Title = MapValue<string>(nameof(bug.Title), valuesToMap, propertyMappingList);
 
             //  Description
-            bug.Description = MapValue<string>("Description", valuesToMap, propertyMappingList);
+            bug.Description = MapValue<string>(nameof(bug.Description), valuesToMap, propertyMappingList);
 
             //  AssignedTo
-            bug.AssignedTo = MapValue<string>("AssignedTo", valuesToMap, propertyMappingList);
+            bug.AssignedTo = MapValue<string>(nameof(bug.AssignedTo), valuesToMap, propertyMappingList);
 
             //  State
-            bug.State = MapValue<string>("State", valuesToMap, propertyMappingList);
+            bug.State = MapValue<string>(nameof(bug.State), valuesToMap, propertyMappingList);
 
             //  ChangedDate
-            bug.ChangedDate = MapValue<DateTime?>("ChangedDate", valuesToMap, propertyMappingList); ;
+            bug.ChangedDate = MapValue<DateTime?>(nameof(bug.ChangedDate), valuesToMap, propertyMappingList); ;
 
             //  CreatedBy
-            bug.CreatedBy = MapValue<string>("CreatedBy", valuesToMap, propertyMappingList);
+            bug.CreatedBy = MapValue<string>(nameof(bug.CreatedBy), valuesToMap, propertyMappingList);
 
             //  Priority
-            bug.Priority = MapValue<string>("Priority", valuesToMap, propertyMappingList);
+            bug.Priority = MapValue<string>(nameof(bug.Priority), valuesToMap, propertyMappingList);
 
             //  Severity
-            bug.Severity = MapValue<string>("Severity", valuesToMap, propertyMappingList);
+            bug.Severity = MapValue<string>(nameof(bug.Severity), valuesToMap, propertyMappingList);
 
             bug.Type = string.IsNullOrWhiteSpace(bug.Priority)
                            ? BugType.Yellow

@@ -60,6 +60,7 @@ namespace Bugger.Proxy
         /// </returns>
         ReadOnlyCollection<Bug> Query(List<string> teamMembers, bool isFilterCreatedBy = false);
 
+        ReadOnlyCollection<string> GetVisibleBugFields();
 
         #region SettingDialog
         /// <summary>

@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Margin="5,0" Text="{x:Static p:Resources.TeamBugs}" VerticalAlignment="Bottom"/>
-        <DataGrid ItemsSource="{Binding Bugs}" FrozenColumnCount="2" Margin="5" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="BugDataGrid" ItemsSource="{Binding Bugs}" FrozenColumnCount="2" Margin="5" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="SizeToCells">
                     <DataGridTemplateColumn.CellTemplate>

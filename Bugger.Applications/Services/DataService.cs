@@ -19,6 +19,7 @@ namespace Bugger.Applications.Services
         private int userBugsProgressValue;
         private int teamBugsProgressValue;
         private InitializeStatus initializeStatus;
+        private MultiThreadingObservableCollection<string> visibleFields;
         #endregion
 
         [ImportingConstructor]
@@ -32,12 +33,21 @@ namespace Bugger.Applications.Services
             this.teamBugsQueryState = QueryStatus.QureyPause;
             this.teamBugsProgressValue = 0;
             this.initializeStatus = InitializeStatus.Initializing;
+            this.visibleFields = new MultiThreadingObservableCollection<string>();
         }
 
         #region Properties
         public MultiThreadingObservableCollection<Bug> UserBugs { get { return this.userBugs; } }
 
         public MultiThreadingObservableCollection<Bug> TeamBugs { get { return this.teamBugs; } }
+
+        public MultiThreadingObservableCollection<string> VisibleBugFields
+        {
+            get
+            {
+                return this.visibleFields;
+            }
+        }
 
         public DateTime RefreshTime
         {

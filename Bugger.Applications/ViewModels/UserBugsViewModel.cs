@@ -1,17 +1,21 @@
-﻿using BigEgg.Framework.Applications.ViewModels;
+﻿using System;
+using BigEgg.Framework.Applications.ViewModels;
 using Bugger.Applications.Services;
 using Bugger.Applications.Views;
 using Bugger.Domain.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ComponentModel.Composition;
 
 namespace Bugger.Applications.ViewModels
-{ 
+{
     [Export]
     public class UserBugsViewModel : ViewModel<IUserBugsView>
     {
         #region Fields
+
         private readonly IDataService dataService;
+
         #endregion
 
         [ImportingConstructor]
@@ -22,7 +26,17 @@ namespace Bugger.Applications.ViewModels
         }
 
         #region Properties
-        public ObservableCollection<Bug> Bugs { get { return this.dataService.UserBugs; } }
+
+        public ObservableCollection<Bug> Bugs
+        {
+            get { return this.dataService.UserBugs; }
+        }
+
+        public ObservableCollection<string> VisibleBugFields
+        {
+            get { return this.dataService.VisibleBugFields; }
+        }
+
         #endregion
     }
 }

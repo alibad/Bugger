@@ -21,6 +21,7 @@ namespace Bugger.Presentation.DesignData
         private int userBugsProgressValue;
         private int teamBugsProgressValue;
         private InitializeStatus initializeStatus;
+        private MultiThreadingObservableCollection<string> visibleFields;
         #endregion
 
         public MockDataService()
@@ -35,7 +36,10 @@ namespace Bugger.Presentation.DesignData
             this.teamBugsProgressValue = 100;
             this.initializeStatus = InitializeStatus.Initializing;
 
+            this.visibleFields = new MultiThreadingObservableCollection<string>();
+
             InitializeBugs();
+            InitializeVisibleBugFields();
         }
 
         #region Properties
@@ -47,6 +51,11 @@ namespace Bugger.Presentation.DesignData
         public MultiThreadingObservableCollection<Bug> TeamBugs
         {
             get { return this.teamBugs; }
+        }
+
+        public MultiThreadingObservableCollection<string> VisibleBugFields
+        {
+            get { return this.visibleFields; }
         }
 
         public DateTime RefreshTime { get; set; }
@@ -342,6 +351,22 @@ namespace Bugger.Presentation.DesignData
                 this.teamBugs.Add(bug);
             }
         }
+
+        private void InitializeVisibleBugFields()
+        {
+            var bug = new Bug();
+
+            this.VisibleBugFields.Add(nameof(bug.ID));
+            this.VisibleBugFields.Add(nameof(bug.Priority));
+            this.VisibleBugFields.Add(nameof(bug.Title));
+            this.VisibleBugFields.Add(nameof(bug.Description));
+            this.VisibleBugFields.Add(nameof(bug.State));
+            this.VisibleBugFields.Add(nameof(bug.AssignedTo));
+            this.VisibleBugFields.Add(nameof(bug.CreatedBy));
+            this.VisibleBugFields.Add(nameof(bug.ChangedDate));
+            this.VisibleBugFields.Add(nameof(bug.Type));
+        }
+
         #endregion
     }
 }

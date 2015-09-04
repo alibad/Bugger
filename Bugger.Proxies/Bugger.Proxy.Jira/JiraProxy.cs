@@ -55,7 +55,7 @@ namespace Bugger.Proxy.Jira
             this.jiraHelper = jiraHelper;
 
             this.testConnectionCommand = new DelegateCommand(TestConnectionCommandExcute, CanTestConnectionCommandExcute);
-
+            
             this.jiraFieldsCache = new List<JiraField>();
             this.stateValues = new ObservableCollection<string>();
             this.priorityValues = new List<string>() { "None", "Low", "Medium", "High" };
@@ -356,6 +356,24 @@ namespace Bugger.Proxy.Jira
                 this.CanQuery = false;
                 return new ReadOnlyCollection<Bug>(bugs);
             }
+        }
+
+        public override ReadOnlyCollection<string> GetVisibleBugFields()
+        {
+            var visibleFields = new List<string>();
+
+            if (document != null && document.PropertyMappingCollection != null)
+            {
+                foreach (var propertyMapping in document.PropertyMappingCollection)
+                {
+                    if (!string.IsNullOrEmpty(propertyMapping.Value) && propertyMapping.Value != "None")
+                    {
+                        visibleFields.Add(propertyMapping.Key);
+                    }
+                }
+            }
+
+            return new ReadOnlyCollection<string>(visibleFields);
         }
 
         private void UpdateSettingDialogPriorityValues()
